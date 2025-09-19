@@ -1,16 +1,9 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 
 export default function SimuStoriesPage() {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
-  function togglePlay() {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) v.play().catch(() => {});
-    else v.pause();
-  }
 
   return (
     <div className="party-root">

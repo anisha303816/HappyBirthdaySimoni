@@ -1,8 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-
-
 export default function IllBeThereForYouPage() {
   return (
     <div className="ill-container">
@@ -26,7 +23,7 @@ export default function IllBeThereForYouPage() {
           </div>
 
           <p className="caption">
-            Monica n Rachel are nothing compared to us hehe. I'll be there for you...when the rain starts to fall...like I've been there before...
+            Monica n Rachel are nothing compared to us hehe. I&apos;ll be there for you...when the rain starts to fall...like I&apos;ve been there before...
           </p>
         </div>
 

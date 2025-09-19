@@ -1,17 +1,25 @@
 "use client"
 import React, {useState} from 'react';
 import { X, Download, MoreHorizontal, Share, ExternalLink } from 'lucide-react';
-import Link from "next/link";
+
+type ImageType = {
+  id: number;
+  src: string;
+  title: string;
+  description: string;
+  category: string;
+  height: number;
+};
 
 export default function PinterestGallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', 'Animated', 'Christmas', 'Cutie!', 'Navratri', 'New Year', 'Onam'];
 
   // Pinterest-style images with varying heights
-  const images = [
+  const images: ImageType[] = [
     {
       id: 1,
       src: "/images/gallery/1.jpg",
@@ -163,7 +171,7 @@ export default function PinterestGallery() {
     ? images 
     : images.filter(img => img.category === selectedCategory);
 
-  const handleDownload = (src, filename) => {
+  const handleDownload = (src: string, filename: string) => {
     const link = document.createElement("a");
     link.href = src;
     link.download = filename || "memory.jpg";
@@ -172,7 +180,7 @@ export default function PinterestGallery() {
     document.body.removeChild(link);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: React.SetStateAction<ImageType | null>) => {
     setSelectedImage(image);
   };
 
@@ -274,7 +282,7 @@ export default function PinterestGallery() {
                 <div className="modal-footer">
                   <div className="modal-user">
                     <div className="user-avatar">S</div>
-                    <span className="user-name">Simu's Gallery</span>
+                    <span className="user-name">Simu&apos;s Gallery</span>
                   </div>
                 </div>
               </div>
