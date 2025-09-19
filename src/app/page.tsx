@@ -1,103 +1,101 @@
-import Image from "next/image";
+"use client";
+import React from 'react';
+import { useRouter } from 'next/navigation';
+
+const bubbles = [
+  { label: "i'll be there for you", top: '20%', left: '40%' },
+   { label: "simu day!",  top: '80%', left: '70%' },
+ { label: "down the memory lane", top: '80%', left: '20%' },
+];
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  function handleBubbleClick(label: string) {
+    const routes: Record<string, string> = {
+      "i'll be there for you": "/ill-be-there-for-you",
+      "simu day!": "/simu-stories",
+      "down the memory lane": "/memory-lane",
+    };
+
+    const route = routes[label];
+    if (route) {
+      router.push(route);
+      return;
+    }
+
+    // fallback: open a small toast or log
+    console.warn('No route defined for:', label);
+  }
+  
+  return (
+    <div className="collage-background" style={{ minHeight: '100vh', width: '100vw', position: 'relative', overflow: 'hidden' }}>
+      {/* Confetti */}
+      <div className="confetti">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="confetti-piece"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              transform: `scale(${0.5 + Math.random() * 1})`,
+              backgroundColor: `hsl(${Math.random() * 360}, 70%, 70%)`
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Floating Bubbles */}
+      {bubbles.map((bubble, idx) => (
+        <button
+          key={bubble.label}
+          className="bubble"
+          style={{
+            position: 'absolute',
+            top: bubble.top,
+            left: bubble.left,
+            padding: '2rem 2.5rem',
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.85)',
+            color: '#ff91a4',
+            fontWeight: 700,
+            fontSize: '1.2rem',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'transform 0.2s',
+            animation: `float${idx} 4s ease-in-out infinite alternate`,
+            zIndex: 10,
+            outline: 'none',
+            fontFamily: 'var(--header-font), cursive',
+          }}
+          onClick={() => handleBubbleClick(bubble.label)}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {bubble.label}
+        </button>
+      ))}
+
+      {/* Bubble floating keyframes */}
+      <style>{`
+        @keyframes float0 {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-30px); }
+        }
+        @keyframes float1 {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-40px); }
+        }
+        @keyframes float2 {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-25px); }
+        }
+        .bubble:hover {
+          transform: scale(1.08);
+          background: #ff91a4;
+          color: #fff;
+        }
+      `}</style>
     </div>
   );
 }

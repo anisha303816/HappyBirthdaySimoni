@@ -1,26 +1,167 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Handlee&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Fonts (optional, example using Google Fonts) */
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary-color: #fce4ec;
+  --secondary-color: #ff91a4;
+  --accent-color: #a7d9b7; /* Light green */
+  --text-color: #4a4a4a;
+  --header-font: 'Pacifico', cursive;
+  --body-font: 'Handlee', cursive;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
+
+/* Background inspired by the collage */
+.collage-background {
+  background-image: url('/images/bg1.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+/* Overlay to make text readable on busy background */
+.collage-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2); 
+  z-index: -1; /* Behind content, above background image */
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque container */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1; /* Above the overlay */
+}
+
+h1 {
+  font-family: var(--header-font);
+  font-size: 3.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-family: var(--body-font);
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.birthday-girl-img {
+  width: 250px; /* Adjust size as needed */
+  height: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 50%; /* Make it round if desired */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.birthday-girl-img:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #6a6a6a;
+}
+
+.message-box {
+  background-color: var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--secondary-color); /* Example color */
+  border-radius: 50%;
+  opacity: 0;
+  animation: fall 5s linear infinite;
+}
+
+.confetti-piece:nth-child(2n) { background-color: var(--accent-color); }
+.confetti-piece:nth-child(3n) { background-color: #ffcc80; /* Light orange */ }
+.confetti-piece:nth-child(4n) { background-color: #81c784; /* Green */ }
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Adjust animation delays and starting positions for variety */
+.confetti-piece:nth-child(1) { left: 10%; animation-delay: 0s; }
+.confetti-piece:nth-child(2) { left: 20%; animation-delay: 1s; transform: scale(0.8); }
+.confetti-piece:nth-child(3) { left: 30%; animation-delay: 0.5s; }
+.confetti-piece:nth-child(4) { left: 40%; animation-delay: 2s; transform: scale(1.2); }
+.confetti-piece:nth-child(5) { left: 50%; animation-delay: 1.5s; }
+.confetti-piece:nth-child(6) { left: 60%; animation-delay: 2.5s; transform: scale(0.9); }
+.confetti-piece:nth-child(7) { left: 70%; animation-delay: 0.8s; }
+.confetti-piece:nth-child(8) { left: 80%; animation-delay: 3s; transform: scale(1.1); }
+.confetti-piece:nth-child(9) { left: 90%; animation-delay: 1.2s; }
+/* Add more confetti pieces as desired */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .birthday-girl-img {
+    width: 180px;
+  }
+}
+
