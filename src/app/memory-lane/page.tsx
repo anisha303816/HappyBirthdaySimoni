@@ -38,7 +38,7 @@ export default function PinterestGallery() {
     },
     {
       id: 3,
-      src: "/images/gallery/3.jpg",
+      src: "/images/gallery/3.JPG",
       title: "Kidddu", 
       description: "Savage simu tearing up all the books",
       category: "Cutie!",
@@ -46,7 +46,7 @@ export default function PinterestGallery() {
     },
     {
       id: 4,
-      src: "/images/gallery/4.jpg",
+      src: "/images/gallery/4.JPG",
       title: "Covid Christmas",
       description: "Playing dress up;), look at all the beauties!",
       category: "Christmas", 
@@ -54,7 +54,7 @@ export default function PinterestGallery() {
     },
     {
       id: 15,
-      src: "/images/gallery/15.jpg",
+      src: "/images/gallery/15.JPG",
       title: "Christmas Miracle",
       description: "The day of beautiful road crossings and ice cream of course!",
       category: "Christmas",
@@ -70,7 +70,7 @@ export default function PinterestGallery() {
     },
     {
       id: 7,
-      src: "/images/gallery/7.jpg",
+      src: "/images/gallery/7.JPG",
       title: "Onam 2024",
       description: "OOOOF Pretty Women!!! One woman in particular is toh the prettiest!",
       category: "Onam",
@@ -110,7 +110,7 @@ export default function PinterestGallery() {
     },
     {
       id: 10,
-      src: "/images/gallery/10.jpg",
+      src: "/images/gallery/10.JPG",
       title: "Standard Navratri Selfie",
       description: "2 beautiful women with Debayan, very rare sight indeed.",
       category: "Navratri", 
@@ -118,7 +118,7 @@ export default function PinterestGallery() {
     },
     {
       id: 14,
-      src: "/images/gallery/14.jpeg",
+      src: "/images/gallery/14.JPEG",
       title: "Past New Years",
       description: "All of us coincidentally wearing white. How we danced our asses off on the stage, do you remember, it almost broke. Times were simpler...",
       category: "New Year",
@@ -134,7 +134,7 @@ export default function PinterestGallery() {
     },
     {
       id: 16,
-      src: "/images/gallery/16.jpg",
+      src: "/images/gallery/16.JPG",
       title: "Lioness with Lion",
       description: "Its a wonder we didnt fall off anywhere doing masti. But what an adventure! When are we going cycling againnn bolo! ",
       category: "Cutie!",
@@ -142,7 +142,7 @@ export default function PinterestGallery() {
     },
     {
       id: 17,
-      src: "/images/gallery/17.jpg",
+      src: "/images/gallery/17.JPG",
       title: "New Year 2024",
       description: "Once again after dancing our asses off, we pose like pros!!",
       category: "New Year",
@@ -150,7 +150,7 @@ export default function PinterestGallery() {
     },
     {
       id: 18,
-      src: "/images/gallery/18.jpg",
+      src: "/images/gallery/18.JPG",
       title: "Slaying since 2000",
       description: "There is nothing this naughty girl can't do!!! You love with alll your heart, one of the purest souls in this world!",
       category: "Cutie!",
